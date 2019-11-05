@@ -1,0 +1,20 @@
+
+980638e7-1428-418d-a08a-afb8c9fdce05
+
+admin@M365x227278.onmicrosoft.com
+
+devday2018!
+
+stone.li@M365x227278.onmicrosoft.com
+devday2018!
+Nomo1063
+
+file://stoneli/users/two/.svn.server
+
+https://github.com/richdizz/SkypeSDKAngularSample
+
+API:  http://officedev.github.io/skype-docs/Skype/WebSDK/model/api/globals.html
+
+https://msdn.microsoft.com/skype/websdk/docs/developwebsdkappsforsfbonline
+
+https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token

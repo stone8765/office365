@@ -1,0 +1,96 @@
+<div class="content-body">
+    <div class="header">
+        One Drive Explorer
+    </div>
+
+    <span>
+        <a ng-href="#onedrive">Root</a>
+    </span>
+
+    <span ng-repeat="path in paths">
+        > <a ng-href="#onedrive/#{{path.path}}">{{path.name}}</a>
+    </span>
+
+
+    <ul ng-if="data.children && data.children.length>0" class="list-group" style="padding: 10px;">
+        <li class="list-group-item row panel-heading">
+            <div class="col-lg-3">
+                <span>Name</span>
+            </div>
+            <div class="col-lg-2">
+                <span>Modified By</span>
+            </div>
+            <div class="col-lg-2">
+                <span>Modified</span>
+            </div>
+            <div class="col-lg-1">
+                <span>File Size</span>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </li>
+        <li ng-repeat="child in data.children" class="list-group-item row">
+            <div class="col-lg-3">
+                <span ng-show="child.folder">
+                    <i class="glyphicon glyphicon-folder-close"></i>
+                </span>
+                <span ng-show="child.file">
+                    <i class="glyphicon glyphicon-file"></i>
+                </span>
+                <a ng-href="#/onedrive/#{{path + '/' + encodeURIComponent(child.name)}}" ng-bind="child.name"> </a>
+            </div>
+            <div class="col-lg-2">
+                <span ng-bind="child.lastModifiedBy.user.displayName"></span>
+            </div>
+            <div class="col-lg-2">
+                <span ng-bind="child.lastModifiedDateTime|formatDate"></span>
+            </div>
+            <div class="col-lg-1">
+                <span ng-show="child.file" ng-bind="child.size|humanReadableFileSize"></span>
+            </div>
+            <div class="col-lg-4">
+                <span ng-show="child.folder">
+                    <a href="javascript:void(0);" ng-click="uploadFileByApi(child)">UploadFile</a>
+                </span>
+                <span ng-show="child.file">
+                    <a href="javascript:void(0);" ng-click="open(child)">open</a>
+                    <a href="javascript:void(0);" ng-click="subscribe(child)">subscribe</a>
+                    <a href="javascript:void(0);" ng-click="createSharingLink(child)">Share</a>
+                    <a href="javascript:void(0);" ng-click="createSharingLinkByWebApi(child)">ShareByApi</a>
+                    <a ng-href="{{child.webUrl}}" target="_black"> View </a>
+                    <a href="javascript:void(0);" ng-click="downloadFileByApi(child)">DownloadByApi</a>
+                    <a ng-href="{{child['@microsoft.graph.downloadUrl']}}" target="_black"> Download </a>
+                </span>
+            </div>
+        </li>
+    </ul>
+    <div ng-show="data.file">
+        <img style="max-width: 100%; max-height: 300px;" ng-show="data.thumbnails && data.thumbnails.length>0" ng-src="{{data.thumbnails[0]['large'].url}}">
+        <div>
+            <span ng-bind="data.name"></span>
+            <a ng-href="{{data.webUrl}}" target="_black"> View </a>
+            <a ng-href="{{data['@microsoft.graph.downloadUrl']}}" target="_black"> Download </a>
+        </div>
+    </div>
+    <div ng-hide="(data.children && data.children.length>0)||data.file">
+        <p>No items in this folder.</p>
+    </div>
+
+
+    <!-- <hr>
+
+    test drive id
+    
+    <div>
+        <ul class="list-group">
+            <li ng-repeat="drive in drives" class="list-group-item">
+                <div>
+                    <span>{{drive.name}}</span>
+                    <div ng-repeat="item in items[drive.id]">
+                        {{item.name}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div> -->
+</div>

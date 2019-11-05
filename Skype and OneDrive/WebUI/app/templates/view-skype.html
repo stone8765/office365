@@ -1,0 +1,96 @@
+<div>
+    <header>
+        <div class="header">
+            <img src="content/skype-developer-logo.png">
+        </div>
+    </header>
+    <!-- <div class="col-lg-4">
+        <img ng-src="{{mePerson.avatarUrl()}}" err-src="{{defaultPhoto}}" class="img-circle img-responsive" />
+    </div> -->
+
+    <div class="col-lg-12">
+        <ul class="list-group" style="padding-top: 10px;">
+            <li class="list-group-item list-group-item-heading">Current Login User</li>
+            <li class="list-group-item">Name:
+                <span ng-bind="mePerson.displayName()"></span>
+            </li>
+            <li class="list-group-item">Status:
+                <span ng-bind="mePerson.status()"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-12">
+        <ul class="list-group" style="padding-top: 10px;">
+            <li class="list-group-item disabled">My Contacts</li>
+            <li class="list-group-item" ng-show="!contacts">Loading...</li>
+            <li class="list-group-item" ng-repeat="contact in contacts" ng-class="{'active': contact.active}" ng-click="startConversation(contact)">
+
+                <!-- <img ng-src="{{contact.avatarUrl}}" err-src="{{defaultPhoto}}" class="img-circle img-responsive photo" /> -->
+
+                <img ng-src="{{defaultPhoto}}" replace-src="{{contact.avatarUrl}}" class="img-circle img-responsive photo" />
+                <span>{{contact.name}}</span>
+                <div class="status" ng-class="contact.status">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-lg-12">
+        <ul class="list-group" style="padding-top: 10px;">
+            <li class="list-group-item disabled">My Groups</li>
+            <li class="list-group-item" ng-repeat="group in groups">
+                <span>{{group.name}}</span>(<span>{{group.contacts.length}}</span>)
+                (GroupType: <span>{{group.type}}</span>)
+                <ul class="list-group" style="padding-top: 10px;">
+                    <li class="list-group-item disabled">My Contacts</li>
+                    <li class="list-group-item" ng-repeat="contact in group.contacts" ng-class="{'active': contact.active}" ng-click="startConversation(contact)">
+                        <img ng-src="{{defaultPhoto}}" replace-src="{{contact.avatarUrl}}" class="img-circle img-responsive photo" />
+                        <span>{{contact.name}}</span>
+                        <div class="status" ng-class="contact.status">
+                        </div>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-lg-12">
+        <input type="text" value="" ng-model="searchText" />
+        <input type="button" value="search" ng-click="search()" />
+        <ul class="list-group" style="padding-top: 10px;">
+            <li class="list-group-item disabled">Search Result</li>
+            <li class="list-group-item" ng-show="!searchContacts">Loading...</li>
+            <li class="list-group-item" ng-repeat="contact in searchContacts" ng-class="{'active': contact.active}" ng-click="startConversation(contact)">
+
+                <img ng-src="{{contact.avatarUrl}}" err-src="{{defaultPhoto}}" class="img-circle img-responsive photo" />
+                <span>{{contact.name}}</span>
+                <div class="status" ng-class="contact.status">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-lg-12">
+        <ul class="list-group" style="padding-top: 10px;">
+            <li class="list-group-item disabled">Chat List</li>
+            <li class="list-group-item" ng-repeat="conv in conversations" ng-class="{'active': currentConv === conv}" ng-click="setActive(conv)">
+
+                <img ng-src="{{conv.avatarUrl()}}" err-src="{{defaultPhoto}}" class="img-circle img-responsive photo" />
+                <span>{{conv.participants(0).displayName()}}</span>
+
+                <button type="button" class="close" style="float: right; margin: 5px 5px 0 0;" aria-label="Close" ng-click="closeConversation(conv)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- <span style="float: right; margin: 5px 5px 0 0; cursor: pointer;" ng-click="closeConversation(conv)">X</span> -->
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-12">
+        <div id="conversationContainer">
+            <div ng-repeat="conv in conversations">
+                <div skype-chat data-conv="conv" data-visible="currentConv === conv">1</div>
+            </div>
+        </div>
+    </div>
+</div>

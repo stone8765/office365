@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe id="skype" style=" height: 100%; width:100%" src="index.html">
+
+    </iframe>
+    <iframe id="xFrame" src="about:blank" style="display:none;"></iframe> 
+
+    <script>
+
+        var globals = {
+            tenant: "M365x227278.onmicrosoft.com",//"rib-software.com",//"M365x227278.onmicrosoft.com",
+            clientId: "980638e7-1428-418d-a08a-afb8c9fdce05",//"8851e90d-306a-4475-903c-704c54a1c4a1",//"980638e7-1428-418d-a08a-afb8c9fdce05",
+            skypeApiKey: '9c967f6b-a846-4df2-b43d-5167e47d81e1',
+            skypeVersion: 'sdk-samples/1.0.0',
+            redirect: "http://localhost:801/",
+            redirectUri: "http://localhost:801/auth.html"
+        };
+        
+        window.addEventListener('skype:inited', function (e) {
+            console.log(e);
+            var service = {
+                config: {
+                    version: globals.skypeVersion,
+                    apiKeyCC: globals.skypeApiKey,
+                    client_id: globals.clientId,
+                    authLink: "https://login.windows.net/" + globals.tenant + "/oauth2/authorize?response_type=token",
+                    authResource: "https://webdir.online.lync.com",
+                    redirect: globals.redirect,
+                    auth: null,
+                    origins: ["https://webdir.online.lync.com/autodiscover/autodiscoverservice.svc/root"],
+                    cors: true,
+                    redirect_uri: globals.redirectUri
+                },
+                mePerson: {},
+                searchContacts: [],
+                conversations: [],
+                conversationsChanged: function () {
+
+                }
+            };
+
+            apiManager = e.detail;
+
+            apiManager;
+            window.client = apiManager.UIApplicationInstance;
+
+            //document.body.removeChild(document.getElementById("skype"));
+
+            client.signInManager.signIn(service.config).then(function (z) {
+
+                var mePerson = client.personsAndGroupsManager.mePerson;
+                console.log(mePerson.displayName());
+                // now mePerson is empty, load mePerson data by get id.
+                mePerson.status.get().then(function () {
+
+                    console.log(mePerson.displayName());
+
+                }, function (err) {
+                    console.error(err);
+                });
+
+            }, function (err) {
+                console.error(err);
+            });
+        });
+    </script>
+</body>
+
+</html>

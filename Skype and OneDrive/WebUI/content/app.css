@@ -1,0 +1,92 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.animation-popup-hover:hover {
+    -webkit-transform: scale(1.15, 1.15);
+    transform: scale(1.15, 1.15);
+    z-index: 10;
+}
+
+.alert {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.badge {
+    border: 1px solid #fff;
+}
+
+/* header styles */
+
+.header {
+    margin: 2% 0;
+}
+
+.header img {
+    width: 30%;
+}
+
+.photo {
+    max-height: 30px;
+    display: inline-block;
+}
+
+.status {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.Online {
+    /* background-color: green !important; */
+    background: url('status/available.png') !important;
+    background-size: 16px 16px !important;
+    /* color: green !important; */
+    color: transparent !important;
+}
+
+.Busy {
+    /* background-color: red !important; */
+    background: url('status/busy.png')!important;
+    background-size: 16px 16px !important;
+    /* color: red !important; */
+    color: transparent !important;
+    ;
+}
+
+.Idle, .IdleOnline, .Away, .BeRightBack {
+    /* background-color: gold !important; */
+    background: url('status/away.png')!important;
+    background-size: 16px 16px !important;
+    /* color: gold; */
+    color: transparent !important;
+    ;
+}
+
+.DoNotDisturb {
+    /* background-color: red !important; */
+    background: url('status/do-not-disturb.png')!important;
+    background-size: 16px 16px !important;
+    /* color:  white !important; */
+    color: transparent !important;
+    ;
+}
+
+.Offline, .Unknown, .Hidden {
+    /* background-color: grey !important; */
+    background: url('status/unknown.png')!important;
+    background-size: 16px 16px !important;
+    /* color: grey !important; */
+    color: transparent !important;
+    ;
+}

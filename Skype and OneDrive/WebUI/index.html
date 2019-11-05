@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Simple Skype Client</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="content/app.css">
+</head>
+
+<body ng-app="skypeapp">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a ng-href="#/login" class="navbar-brand">Office365 Demo</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="navbar-link">
+                        <a ng-href="#/skype" class="navbar-brand">Skype</a>
+                    </li>
+                    <li class="navbar-link">
+                        <a ng-href="#/onedrive" class="navbar-brand">One Drive</a>
+                    </li>
+                    <li class="navbar-link">
+                        <a ng-href="#/powerbi" class="navbar-brand">Power BI</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="container body-content">
+        <div ng-view>
+
+        </div>
+        <hr>
+        <footer>
+            <p>© 2018 - Stone Li</p>
+        </footer>
+    </div>
+
+    <!-- JQuery and Bootstrap references -->
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Skype reference -->
+    <!-- <script type="text/javascript" src="https://swx.cdn.skype.com/shared/v/latest/SkypeBootstrap.min.js"></script> -->
+    <script type="text/javascript" src="//swx.cdn.skype.com/shared/v/1.2.30/SkypeBootstrap.min.js"></script>
+
+    <!-- Angular references -->
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-route/angular-route.min.js"></script>
+
+    <!-- ADAL references -->
+    <!-- <script type="text/javascript" src="lib/adal-angular/dist/adal.min.js"></script>
+    <script type="text/javascript" src="lib/adal-angular/dist/adal-angular.min.js"></script> -->
+    <script type="text/javascript" src="lib/adal-angular/lib/adal.js"></script>
+    <script type="text/javascript" src="lib/adal-angular/lib/adal-angular.js"></script> 
+
+    <!-- <script type="text/javascript" src="lib/msal/msal.js"></script>
+    <script type="text/javascript" src="lib/msal/msal-angular.js"></script> -->
+
+
+    <!-- App scripts -->
+    <script type="text/javascript" src="app/app.config.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
+
+    <script type="text/javascript" src="app/filters/file-size-filter.js"></script>
+    <script type="text/javascript" src="app/filters/date-filter.js"></script>
+
+    <script type="text/javascript" src="app/services/skype-service.js"></script>
+    <script type="text/javascript" src="app/services/one-drive-service.js"></script>
+    <script type="text/javascript" src="app/services/power-bi-service.js"></script>
+
+    <script type="text/javascript" src="app/directives/err-src.js"></script>
+    <script type="text/javascript" src="app/directives/skype-chat.js"></script>
+
+    <script type="text/javascript" src="app/controllers/login-controller.js"></script>
+    <script type="text/javascript" src="app/controllers/skype-controller.js"></script>
+    <script type="text/javascript" src="app/controllers/one-drive-controller.js"></script>
+    <script type="text/javascript" src="app/controllers/power-bi-controller.js"></script>
+
+</body>
+
+</html>
