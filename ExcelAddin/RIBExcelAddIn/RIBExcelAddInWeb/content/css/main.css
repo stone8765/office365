@@ -1,0 +1,11 @@
+.ms-List .ms-ListItem:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+    outline: transparent solid 1px;
+}
+
+.ms-List .ms-ListItem a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+}
